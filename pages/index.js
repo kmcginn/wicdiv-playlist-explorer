@@ -22,9 +22,9 @@ export default function Home({ trackData }) {
 
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
         <ul>
-          {trackData.items.map((item) => (
-            <li>
-              {item.track.name}
+          {trackData.map((tracks) => (
+            <li key={tracks.track.id}>
+              {tracks.track.name}
             </li>
           ))}
         </ul>
