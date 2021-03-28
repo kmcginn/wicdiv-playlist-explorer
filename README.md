@@ -24,3 +24,13 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/).
+
+## Attribution
+
+The Wicked + The Divine is copyright :copyright: 2014 Kieron Gillen & Jamie McKelvie. It is published by Image Comics Inc.
+
+All songs in the playlist are copyright :copyright: their respective owners.
+
+The license for the code in this repo can be found [here](.\LICENSE.txt).
+
+:skull:
