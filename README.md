@@ -31,6 +31,6 @@ The Wicked + The Divine is copyright :copyright: 2014 Kieron Gillen & Jamie McKe
 
 All songs in the playlist are copyright :copyright: their respective owners.
 
-The license for the code in this repo can be found [here](.\LICENSE.txt).
+The license for the code in this repo can be found [here](LICENSE.txt).
 
 :skull:
