@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { getAllPlaylistTracksBasic } from "../lib/spotify-api"
+import SongSummary from "../components/song-summary"
 
 const wicDivPlaylistId = "11LAaVMMhxPfSp4i2b6JRJ";
 
@@ -25,13 +26,13 @@ export default function Home({ trackData }) {
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
-        <ul>
+        <div className="grid gap-y-2">
           {trackData.map((tracks) => (
-            <li key={tracks.track.id}>
-              {tracks.track.name}
-            </li>
+            <div>
+              <SongSummary track={tracks.track}/>
+            </div>
           ))}
-        </ul>
+        </div>
       </main>
     </div>
   )

@@ -4,5 +4,8 @@ module.exports = {
       return {
         '/': { page: '/' }
       };
-    }
+    },
+    images: {
+        domains: ["i.scdn.co"],
+    },
   };
