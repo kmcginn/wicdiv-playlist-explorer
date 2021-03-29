@@ -28,9 +28,7 @@ export default function Home({ trackData }) {
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
         <div className="grid gap-y-2">
           {trackData.map((tracks) => (
-            <div>
-              <SongSummary track={tracks.track}/>
-            </div>
+            <SongSummary track={tracks.track}/>
           ))}
         </div>
       </main>
