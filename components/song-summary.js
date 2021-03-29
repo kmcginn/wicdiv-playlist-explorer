@@ -5,7 +5,8 @@ export default function SongSummary(props) {
     const albumImgUrl = props.track.album.images.find(i => i.height === albumImgSize)?.url;
 
     return (
-        <div className="grid grid-rows-1 grid-cols-2 border border-black">
+        /* TODO: use max-h-? to set the max height of each song card */
+        <div key={props.track.id} className="grid grid-rows-1 grid-cols-2 border border-black">
             { albumImgUrl ? (
             <>
                 <Image 
