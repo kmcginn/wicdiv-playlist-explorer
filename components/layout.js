@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function Layout({ children }) {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <div className="flex flex-col justify-center min-h-screen py-2 space-y-4">
             <Head>
                 <title>WicDiv Playlist Explorer</title>
                 <link rel="icon" href="/favicon.ico" />
@@ -12,10 +12,12 @@ export default function Layout({ children }) {
                 <link rel="manifest" href="/site.webmanifest"/>
             </Head>
             <header>
-                WicDiv Playlist Explorer
+                <h1 className="text-xl border-b-4 border-black">WicDiv Playlist Explorer</h1>
             </header>
-            <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">{children}</main>
-            <footer>💀</footer>
+            <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
+                {children}
+            </main>
+            <footer className="text-center">💀</footer>
         </div>
     );
 }
