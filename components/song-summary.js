@@ -1,23 +1,23 @@
-import Image from "next/image";
-
 export default function SongSummary(props) {
-    const albumImgSize = 300;
-    const albumImgUrl = props.track.album.images.find(i => i.height === albumImgSize)?.url;
+    const albumImgUrl = props.track.album.images[0]?.url;
+    const albumImgSize = props.track.album.images[0]?.height;
 
     return (
         <div key={props.track.id} className="grid grid-rows-1 grid-cols-2 gap-2 max-h-40 max-w-md border-2 border-black rounded-lg">
+            {/* TODO: replace this with a <picture> and <img> setup? */}
             { albumImgUrl ? (
             <>
-                <Image 
+                <img
                     src={albumImgUrl}
                     alt={"Art for album " + props.track.album.name}
                     height={albumImgSize}
                     width={albumImgSize}
-                    className="object-contain"
+                    className="object-contain justify-self-center self-center max-h-36"
                 />
             </>
             ) : (
                 <>
+                    {/* replace this with an image placeholder */}
                     <div className="justify-self-center self-center">
                         No image
                     </div>
