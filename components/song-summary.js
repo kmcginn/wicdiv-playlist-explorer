@@ -5,8 +5,7 @@ export default function SongSummary(props) {
     const albumImgUrl = props.track.album.images.find(i => i.height === albumImgSize)?.url;
 
     return (
-        /* TODO: use max-h-? to set the max height of each song card */
-        <div key={props.track.id} className="grid grid-rows-1 grid-cols-2 border border-black">
+        <div key={props.track.id} className="grid grid-rows-1 grid-cols-2 gap-2 max-h-40 max-w-md border-2 border-black rounded-lg">
             { albumImgUrl ? (
             <>
                 <Image 
@@ -19,15 +18,15 @@ export default function SongSummary(props) {
             </>
             ) : (
                 <>
-                    <div>
+                    <div className="justify-self-center self-center">
                         No image
                     </div>
                 </>
             )}
             <div className="grid grid-rows-2 grid-cols-1">
-                <div>{props.track.name}</div>
+                <div className="justify-self-center self-center">{props.track.name}</div>
                 {/* TODO: display all names separated with commas */}
-                <div>{props.track.artists[0].name}</div>
+                <div className="justify-self-center self-center">{props.track.artists[0].name}</div>
             </div>
         </div>
     )
