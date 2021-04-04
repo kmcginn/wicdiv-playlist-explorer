@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Layout({ children }) {
     return (
@@ -11,8 +12,14 @@ export default function Layout({ children }) {
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
                 <link rel="manifest" href="/site.webmanifest"/>
             </Head>
-            <header>
-                <h1 className="text-xl border-b-4 border-black">WicDiv Playlist Explorer</h1>
+            <header className="border-b-4 border-black flex space-x-8">
+                <h1 className="text-xl">WicDiv Playlist Explorer</h1>
+                <nav>
+                    <ul className="space-x-4">
+                        <li className="float-left"><Link href="/"><a>Home</a></Link></li>
+                        <li className="float-left"><Link href="/about/"><a>About</a></Link></li>
+                    </ul>
+                </nav>
             </header>
             <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
                 {children}
