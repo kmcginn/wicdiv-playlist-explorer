@@ -30,7 +30,7 @@ export async function getStaticProps() {
     do {
       const playlistTracksResponse = await spotifyApi.getPlaylistTracks(
         wicDivPlaylistId,
-        { fields: "items(track(id,name,artists(id,name),album(id,name,images))),total",
+        { fields: "items(added_at,track(id,name,artists(id,name),album(id,name,images))),total",
           offset: offset,
           limit: limit }
       );
@@ -54,9 +54,9 @@ export async function getStaticProps() {
 export default function Home({ trackData }) {
   return (
     <Layout>
-      <div className="grid gap-y-2">
+      <div key="tracklist" className="grid gap-y-2">
         {trackData.map((tracks) => (
-          <SongSummary track={tracks.track}/>
+          <SongSummary key={tracks.track.id + "_" + tracks.added_at} track={tracks.track}/>
         ))}
       </div>
     </Layout>
