@@ -3,7 +3,7 @@ export default function SongSummary(props) {
     const albumImgSize = props.track.album.images[0]?.height;
 
     return (
-        <div key={props.track.id} className="grid grid-rows-1 grid-cols-2 gap-2 max-h-40 max-w-md border-2 border-black rounded-lg">
+        <div className="grid grid-rows-1 grid-cols-2 gap-2 max-h-40 max-w-md border-2 border-black rounded-lg">
             {/* TODO: replace this with a <picture> and <img> setup? */}
             { albumImgUrl ? (
             <>
