@@ -1,20 +1,20 @@
 import Layout from "../../components/layout"
-import { getPlaylistBasicTrackInfo, getTrackAudioFeatures, getTrackInfo } from "../../lib/spotify-helper"
+import SpotifyHelper from "../../lib/spotify-helper"
 
 export async function getStaticProps({params}) {
-    const trackInfo = await getTrackInfo(params.id);
-    const trackAudioFeatures = await getTrackAudioFeatures(params.id);
+    const trackInfo = await SpotifyHelper.getTrackInfo(params.id);
+    const trackAudioFeatures = await SpotifyHelper.getTrackAudioFeatures(params.id);
 
     return {
         props: {
-            trackInfo,
-            trackAudioFeatures
+            trackInfo: trackInfo ?? null,
+            trackAudioFeatures: trackAudioFeatures ?? null,
         }
     }
 }
 
 export async function getStaticPaths() {
-    const tracks = await getPlaylistBasicTrackInfo();
+    const tracks = await SpotifyHelper.getPlaylistBasicTrackInfo();
 
     const paths = tracks.map((trackInfo) => {
         return {
@@ -30,14 +30,14 @@ export async function getStaticPaths() {
 }
 
 export default function Song(props) {
-    const albumImgUrl = props.trackInfo.album.images[0]?.url;
-    const albumImgSize = props.trackInfo.album.images[0]?.height;
+    const albumImgUrl = props.trackInfo?.album.images[0]?.url;
+    const albumImgSize = props.trackInfo?.album.images[0]?.height;
 
     return (
         <Layout>
             <img
                 src={albumImgUrl}
-                alt={"Art for album " + props.trackInfo.album.name}
+                alt={"Art for album " + props.trackInfo?.album.name}
                 height={albumImgSize}
                 width={albumImgSize}
                 className="object-contain justify-self-center self-center max-h-60"

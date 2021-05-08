@@ -1,9 +1,9 @@
 import Layout from '../components/layout'
 import SongSummary from "../components/song-summary"
-import { getPlaylistBasicTrackInfo } from "../lib/spotify-helper"
+import SpotifyHelper from "../lib/spotify-helper"
 
 export async function getStaticProps() {
-  const trackData = await getPlaylistBasicTrackInfo();
+  const trackData = await SpotifyHelper.getPlaylistBasicTrackInfo();
 
   return {
     props: {
