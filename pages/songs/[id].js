@@ -1,8 +1,12 @@
 import Layout from "../../components/layout"
 import SpotifyHelper from "../../lib/spotify-helper"
+import {setTimeout} from "timers/promises"
 
 export async function getStaticProps({params}) {
+    // use timeouts to avoid API throttling; there's likely a better way to do this
+    await setTimeout(1000);
     const trackInfo = await SpotifyHelper.getTrackInfo(params.id);
+    await setTimeout(1000);
     const trackAudioFeatures = await SpotifyHelper.getTrackAudioFeatures(params.id);
 
     return {
