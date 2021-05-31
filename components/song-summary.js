@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SongSummary(props) {
     const albumImgUrl = props.track.album.images[0]?.url;
@@ -10,7 +11,7 @@ export default function SongSummary(props) {
                 {/* TODO: replace this with a <picture> and <img> setup? */}
                 { albumImgUrl ? (
                 <>
-                    <img
+                    <Image
                         src={albumImgUrl}
                         alt={"Art for album " + props.track.album.name}
                         height={albumImgSize}
