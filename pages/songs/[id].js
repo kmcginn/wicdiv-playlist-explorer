@@ -1,32 +1,33 @@
 import Layout from "../../components/layout"
-import SpotifyHelper from "../../lib/spotify-helper"
-import {setTimeout} from "timers/promises"
+import fs from 'fs'
+import path from 'path'
+
+const dataDirectory = path.join(process.cwd(), 'data')
 
 export async function getStaticProps({params}) {
-    // use timeouts to avoid API throttling; there's likely a better way to do this
-    await setTimeout(1000);
-    const trackInfo = await SpotifyHelper.getTrackInfo(params.id);
-    await setTimeout(1000);
-    const trackAudioFeatures = await SpotifyHelper.getTrackAudioFeatures(params.id);
+    const trackDetailDataPath = path.join(dataDirectory, 'track_details.json');
+    const trackDetailData = JSON.parse(fs.readFileSync(trackDetailDataPath, 'utf-8'));
 
     return {
         props: {
-            trackInfo: trackInfo ?? null,
-            trackAudioFeatures: trackAudioFeatures ?? null,
+            trackInfo: trackDetailData[params.id].details ?? null,
+            trackAudioFeatures: trackDetailData[params.id].audio_features ?? null,
         }
     }
 }
 
 export async function getStaticPaths() {
-    const tracks = await SpotifyHelper.getPlaylistBasicTrackInfo();
+    const playlistDataPath = path.join(dataDirectory, 'playlist_tracks.json');
+    const playlistData = JSON.parse(fs.readFileSync(playlistDataPath, 'utf-8'));
 
-    const paths = tracks.map((trackInfo) => {
+    const paths = playlistData.map((trackInfo) => {
         return {
             params: {
                 id: trackInfo.track.id
             }
         }
     });
+
     return {
         paths: paths,
         fallback: false
