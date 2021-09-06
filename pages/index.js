@@ -1,13 +1,17 @@
 import Layout from '../components/layout'
 import SongSummary from "../components/song-summary"
-import SpotifyHelper from "../lib/spotify-helper"
+import fs from 'fs'
+import path from 'path'
+
+const dataDirectory = path.join(process.cwd(), 'data')
 
 export async function getStaticProps() {
-  const trackData = await SpotifyHelper.getPlaylistBasicTrackInfo();
+  const playlistDataPath = path.join(dataDirectory, 'playlist_tracks.json');
+  const playlistData = JSON.parse(fs.readFileSync(playlistDataPath, 'utf-8'));
 
   return {
     props: {
-      trackData
+      trackData: playlistData
     },
   }
 
